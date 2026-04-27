@@ -2,8 +2,8 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 
 export default function Home() {
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const [results, setResults] = useState([]);
   const [running, setRunning] = useState(false);
   const intervalRef = useRef(null);
