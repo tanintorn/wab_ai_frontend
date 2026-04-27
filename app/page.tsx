@@ -4,9 +4,9 @@ import { useRef, useState, useEffect, useCallback } from "react";
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<any[]>([]);
   const [running, setRunning] = useState(false);
-  const intervalRef = useRef(null);
+  const intervalRef = useRef<any>(null);
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
   const capture = useCallback(async () => {
@@ -15,7 +15,7 @@ export default function Home() {
     if (!canvas || !video || video.videoWidth === 0) return;
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
-    canvas.getContext("2d").drawImage(video, 0, 0);
+    canvas.getContext("2d")!.drawImage(video, 0, 0);
     canvas.toBlob(async (blob) => {
       if (!blob) return;
       const form = new FormData();
